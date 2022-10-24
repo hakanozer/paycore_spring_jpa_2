@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,9 +20,20 @@ public class CustomerService {
 
     public ResponseEntity save(Customer customer) {
         Map<REnum, Object> hm = new LinkedHashMap<>();
-        cRepo.save(customer);
-        hm.put(REnum.status, true);
-        hm.put(REnum.result, customer);
+        Optional<Customer> optionalCustomer = cRepo.findByEmailEquals(customer.getEmail());
+
+        try {
+            if ( optionalCustomer.isPresent() ) {
+                throw new RuntimeException("");
+            }
+            cRepo.save(customer);
+            hm.put(REnum.status, true);
+            hm.put(REnum.result, customer);
+        }catch (Exception ex) {
+            hm.put(REnum.status, false);
+            hm.put(REnum.message, "email address all ready use");
+        }
+
         return new ResponseEntity(hm, HttpStatus.OK);
     }
 

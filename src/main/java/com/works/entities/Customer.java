@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Data
-public class Customer {
+public class Customer extends Base {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +32,25 @@ public class Customer {
     private String email;
 
     @NotNull
-    private Integer phone;
+    private Long phone;
 
     @NotNull
     private Boolean status;
 
 
+    @PrePersist
+    public void prePersist() {
+        System.out.println("customer prePersist");
+    }
+
+    @PostPersist
+    public void postPersist() {
+        System.out.println("customer postPersist : " + this.cid);
+    }
+
+
+    @PostLoad
+    public void postLoad() {
+        System.out.println("customer postLoad");
+    }
 }
