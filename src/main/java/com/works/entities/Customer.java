@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -53,4 +54,5 @@ public class Customer extends Base {
     public void postLoad() {
         System.out.println("customer postLoad");
     }
+
 }
