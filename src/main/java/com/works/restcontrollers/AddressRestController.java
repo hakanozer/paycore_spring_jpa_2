@@ -23,4 +23,21 @@ public class AddressRestController {
         return aService.list(page);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity search( @RequestParam(defaultValue = "") String q,
+                                  @RequestParam(defaultValue = "0") int page,
+                                  @RequestParam(defaultValue = "city_asc") String sorting ) {
+        return aService.search(q, page, sorting);
+    }
+
+    @GetMapping("/querySearch")
+    public ResponseEntity querySearch( @RequestParam String name, @RequestParam Long cid ) {
+        return aService.querySearch(name, cid);
+    }
+
+    @GetMapping("/viewCall")
+    public ResponseEntity viewCall( ) {
+        return aService.viewCall();
+    }
+
 }
