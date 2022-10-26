@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "9c944524-35fd-40d4-a791-788c1b15e7e6",
+		"name": "--PayCore-Jpa_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1939021"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8090/customer/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Kemal\",\n    \"surname\": \"Bilmezler\",\n    \"email\": \"kemal@mail.com\",\n    \"phone\": 5436667788,\n    \"status\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/customer/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"customer",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8090/address/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"10 Adresi\",\n    \"address\": \"Kemer\",\n    \"city\": \"Antalya\",\n    \"customer\": { \"cid\": 10 }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/address/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"address",
+						"add"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8090/address/add",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Tatil Adresi\",\n    \"address\": \"Ortaköy\",\n    \"city\": \"İstanbul\",\n    \"customer\": { \"cid\": 5 }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/address/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"address",
+								"add"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Oct 2022 16:15:01 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"result\": {\n        \"aid\": 4,\n        \"title\": \"Tatil Adresi\",\n        \"address\": \"Ortaköy\",\n        \"city\": \"İstanbul\",\n        \"customer\": {\n            \"createdDate\": null,\n            \"lastModifiedDate\": null,\n            \"createdBy\": null,\n            \"lastModifiedBy\": null,\n            \"cid\": 5,\n            \"name\": null,\n            \"surname\": null,\n            \"email\": null,\n            \"phone\": null,\n            \"status\": null\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8090/address/list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/address/list/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"address",
+						"list",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8090/address/search?q=ADRE&page=0&sorting=city_asc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/address/search?q=ADRE&page=2&sorting=city_asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"address",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "ADRE"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "sorting",
+							"value": "city_asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8090/address/querySearch?name=Kaan&cid=6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/address/querySearch?name=Kaan&cid=6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"address",
+						"querySearch"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Kaan"
+						},
+						{
+							"key": "cid",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8090/address/viewCall",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/address/viewCall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"address",
+						"viewCall"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
